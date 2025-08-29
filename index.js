@@ -58,3 +58,32 @@ clearBtn.addEventListener('click', () => {
   callHistory1.innerHTML = '';
 });
 
+
+
+
+// local time
+const callButtons2 = document.querySelectorAll(".call-btn");
+
+callButtons2.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    
+    const card = document.querySelector("#call-history .hidden");
+    if (!card) return; 
+
+    card.classList.remove("hidden"); 
+
+    const timeEl = card.querySelector(".current-time");
+    if (timeEl) {
+      function updateTime() {
+        const now = new Date();
+        timeEl.textContent = now.toLocaleTimeString();
+      }
+
+      updateTime();
+
+      
+      if (card.intervalId) clearInterval(card.intervalId);
+      card.intervalId = setInterval(updateTime, 1000);
+    }
+  });
+});
