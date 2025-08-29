@@ -52,4 +52,9 @@ const callButtons =document.querySelectorAll('.call-btn');
   });
 });
 
+// clear call history 
+const clearBtn = document.getElementById('clear-history');
+clearBtn.addEventListener('click', () => {
+  callHistory1.innerHTML = '';
+});
 
